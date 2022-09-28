@@ -70,6 +70,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Marker mUserMarker;
     private LatLng mCenterLatLong;
     private CameraPosition googlePlex;
+    private SessionManagement sessionMgmt;
+    private String userName;
 
 
     @Override
@@ -77,6 +79,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         parentLayout = findViewById(android.R.id.content);
+
+        sessionMgmt=new SessionManagement(getApplicationContext());
+        userName= sessionMgmt.getUserName();
+        binding.tvUsername.setText(userName);
+
         binding.centerCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

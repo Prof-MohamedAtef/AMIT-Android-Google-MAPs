@@ -64,6 +64,15 @@
                                 android:id="@+id/centerCamera"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tvUsername"
+                                android:layout_marginEnd="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toStartOf="@+id/centerCamera"
+                                app:layout_constraintTop_toTopOf="@+id/centerCamera"
+                                app:layout_constraintBottom_toBottomOf="@+id/centerCamera"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.appcompat.widget.Toolbar>
 
