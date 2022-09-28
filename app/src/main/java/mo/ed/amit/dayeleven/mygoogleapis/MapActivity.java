@@ -136,6 +136,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return options;
     }
 
+    /*
+    animate and move camera
+    uses returnCameraPosition
+     */
     private void animateCamera(GoogleMap mMap) {
         if (mLastLocation != null) {
             googlePlex = returnCameraPosition(String.valueOf(mLastLocation.getLatitude()), String.valueOf(mLastLocation.getLongitude()), 19.0f);
