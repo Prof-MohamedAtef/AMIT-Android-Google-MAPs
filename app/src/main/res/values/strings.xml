@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyGoogleAPIs</string>
+    <string name="GoogleApiKey">AIzaSyCmV7jfWi807RzLygD97LKezfB_P_JaPKE</string>
+    <string name="internet_location_disabled">internet disabled!</string>
+    <string name="accept_grant">grant me location persmission</string>
+</resources>
