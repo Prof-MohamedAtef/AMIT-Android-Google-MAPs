@@ -1,5 +1,7 @@
 package mo.ed.amit.dayeleven.mygoogleapis;
 
+import static mo.ed.amit.dayeleven.mygoogleapis.MapHelper.filterThreeSyllable;
+import static mo.ed.amit.dayeleven.mygoogleapis.MapHelper.getStreetName;
 import static mo.ed.amit.dayeleven.mygoogleapis.MapHelper.returnCameraPosition;
 import static mo.ed.amit.dayeleven.mygoogleapis.MapHelper.statusCheck;
 
@@ -8,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Context;
@@ -15,6 +18,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,13 +43,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+
 import mo.ed.amit.dayeleven.mygoogleapis.databinding.ActivityMainBinding;
+import mo.ed.amit.dayeleven.mygoogleapis.utils.VerifyConnection;
+import mo.ed.amit.dayeleven.mygoogleapis.view.SearchBoxFragment;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         android.location.LocationListener,
         com.google.android.gms.location.LocationListener,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.OnConnectionFailedListener ,
+        MapHelper.OnServiceUnavailable {
 
     private String GoogleApiKey = "AIzaSyCmV7jfWi807RzLygD97LKezfB_P_JaPKE";
     ActivityMainBinding binding;
@@ -72,6 +81,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private CameraPosition googlePlex;
     private SessionManagement sessionMgmt;
     private String userName;
+    private VerifyConnection verifyConn;
+    private String streetName;
+    private ArrayList<String> placesArrayList;
 
 
     @Override
@@ -80,9 +92,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         parentLayout = findViewById(android.R.id.content);
 
-        sessionMgmt=new SessionManagement(getApplicationContext());
-        userName= sessionMgmt.getUserName();
-        binding.tvUsername.setText(userName);
+        placesArrayList=new ArrayList<String>();
+        placesArrayList.add("Home - Al-Mokatam");
+        placesArrayList.add("CAIRO FESTIVAL CITY MALL");
+        placesArrayList.add("MINISTRY OF FINANCE");
+        placesArrayList.add("AL-TAHRIR SQUARE");
+        verifyConn=new VerifyConnection(getApplicationContext());
+
+        animatedSavedPlacesTransition(placesArrayList,"Street 100");
+//        sessionMgmt=new SessionManagement(getApplicationContext());
+//        userName= sessionMgmt.getUserName();
+//        binding.tvUsername.setText(userName);
 
         binding.centerCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -422,6 +442,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 //                            rotateMarker(mCurrent, -360, mMap);
                 }
             }
+            if (verifyConn.isConnected()){
+                new AsyncTask<Void, Void, String>() {
+                    @Override
+                    protected String doInBackground(Void... voids) {
+                        return filterThreeSyllable(getStreetName(getApplicationContext(),mLastLocation,(MapHelper.OnServiceUnavailable)MapActivity.this,true));
+                    }
+                    @Override
+                    protected void onPostExecute(String s) {
+                        super.onPostExecute(s);
+                        streetName = s;
+                        animatedSavedPlacesTransition(placesArrayList,streetName);
+                    }
+                }.execute();
+            }
         } else {
             Log.d("ERROR", "Cannot get Your Location");
             retryRequestLocationUpdates();
@@ -510,6 +544,50 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onStart();
         if (!mGoogleApiClient.isConnected()) {
             mGoogleApiClient.connect();
+            if (verifyConn.isConnected()) {
+                if (mLastLocation != null) {
+                    new AsyncTask<Void, Void, String>() {
+                        @Override
+                        protected String doInBackground(Void... voids) {
+                            return filterThreeSyllable(getStreetName(getApplicationContext(), mLastLocation, (MapHelper.OnServiceUnavailable) MapActivity.this, true));
+                        }
+                        @Override
+                        protected void onPostExecute(String s) {
+                            super.onPostExecute(s);
+                            streetName = s;
+                            if (streetName!=null){
+                                if (placesArrayList!=null&&placesArrayList.size()>0){
+                                    animatedSavedPlacesTransition(placesArrayList, streetName);
+                                }
+                            }
+                        }
+                    }.execute();
+                }
+            }
+        }
+    }
+
+    private void animatedSavedPlacesTransition(ArrayList<String> placesArrayList, String streetName) {
+        SearchBoxFragment searchBoxFragment=new SearchBoxFragment();
+        Bundle bundle=new Bundle();
+        if (placesArrayList!=null){
+            if (placesArrayList.size()>0){
+                bundle.putString("street",streetName);
+                bundle.putSerializable("savedPlacesList", placesArrayList);
+                searchBoxFragment.setArguments(bundle);
+            }
+        }
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in_up, R.anim.slide_in_down, R.anim.slide_out_down, R.anim.slide_out_up);
+        transaction.replace(binding.searchBox.getId(), searchBoxFragment).commit();
+    }
+
+    @Override
+    public void ServiceUnavailable(String msg) {
+        if (verifyConn.isConnected()){
+
+        }else {
+            ShowSnackBar(parentLayout,msg);
         }
     }
 }

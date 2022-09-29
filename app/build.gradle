@@ -46,4 +46,7 @@ dependencies {
 //ButterKnife--------
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
+    // places
+    implementation 'com.google.android.libraries.places:places:2.6.0'
 }

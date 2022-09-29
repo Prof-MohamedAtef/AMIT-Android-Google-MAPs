@@ -76,54 +76,54 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.appcompat.widget.Toolbar>
 
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@id/tool_bar"-->
-<!--                        android:layout_weight="2"-->
-<!--                        android:orientation="vertical">-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tool_bar"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
 
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/search_box"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_margin="15dp"-->
-<!--                            android:layout_weight="2"-->
-<!--                            android:orientation="vertical" />-->
+                        <LinearLayout
+                            android:id="@+id/search_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:layout_weight="2"
+                            android:orientation="vertical" />
 
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/suggestions"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_below="@id/search_box"-->
-<!--                            android:layout_margin="15dp"-->
-<!--                            android:layout_weight="2"-->
-<!--                            android:orientation="vertical" />-->
-<!--                    </RelativeLayout>-->
+                        <LinearLayout
+                            android:id="@+id/suggestions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/search_box"
+                            android:layout_margin="15dp"
+                            android:layout_weight="2"
+                            android:orientation="vertical" />
+                    </RelativeLayout>
 
-<!--                    <RelativeLayout-->
-<!--                        android:id="@+id/bottom_layout"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_alignParentBottom="true"-->
-<!--                        android:layout_weight="2"-->
-<!--                        android:orientation="vertical">-->
+                    <RelativeLayout
+                        android:id="@+id/bottom_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
 
-<!--                        <FrameLayout-->
-<!--                            android:id="@+id/center_button"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_above="@+id/btn_frame"-->
-<!--                            android:layout_margin="6dp"-->
-<!--                            android:layout_weight="1" />-->
+                        <FrameLayout
+                            android:id="@+id/center_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/btn_frame"
+                            android:layout_margin="6dp"
+                            android:layout_weight="1" />
 
-<!--                        <FrameLayout-->
-<!--                            android:id="@+id/btn_frame"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_alignParentBottom="true"-->
-<!--                            android:layout_weight="1" />-->
-<!--                    </RelativeLayout>-->
+                        <FrameLayout
+                            android:id="@+id/btn_frame"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_weight="1" />
+                    </RelativeLayout>
                 </RelativeLayout>
             </LinearLayout>
 

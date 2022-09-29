@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#2237B0</color>
+    <color name="colorPrimaryDark">#2237B0</color>
+    <color name="colorAccent">#E69621</color>
+    <color name="blue">#2237B0</color>
+    <color name="gray">#6D585858</color>
+    <color name="red">#E30D0D</color>
+    <color name="text_register">#968A8888</color>
+
+
+    <color name="colorBink">#E7627A</color>
+    <color name="colorGrey">#7c8089</color>
+    <color name="colorOpenGrey">#DDDDDD</color>
+    <color name="colorTooOpenGrey">#f4f4f4</color>
+    <color name="colorOffWhite">#F9F9F9</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorYellow">#ff9b01</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorDeepGrey">#4C4D51</color>
+    <color name="semitransparent">#27000000</color>
+    <color name="transparent_background">#00ffffff</color>
+    <color name="colorBlue">#2f61cc</color>
+    <color name="bg_row_background">#fa315b</color>
+    <color name="item_name">#535353</color>
+    <color name="description">#a9a9a9</color>
+    <color name="white">#FFFFFF</color>
+
 </resources>
