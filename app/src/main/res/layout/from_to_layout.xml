@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:weightSum="6"
+    app:layout_constraintTop_toBottomOf="@+id/appBar"
+    tools:layout_editor_absoluteX="0dp"
+    android:background="@color/transparent_background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1.5"
+        android:elevation="22dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp">
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_search_pickup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/colorTooOpenGrey"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/un_named_road"
+                android:textColor="@color/colorGrey"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <!--            <LinearLayout-->
+            <!--                android:visibility="gone"-->
+            <!--                android:id="@+id/linear_search_pickup"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content">-->
+            <!--                <fragment-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_margin="10dp"-->
+            <!--                    android:layout_weight="5"-->
+            <!--                    android:id="@+id/place_autocomplete_fragment"-->
+            <!--                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>-->
+            <!--            </LinearLayout>-->
+
+            <EditText
+                android:id="@+id/edit_search_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorTooOpenGrey"
+                android:hint="@string/enter_destination"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/colorGrey"
+                android:textColorHint="@color/description"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/linear_search_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="5"
+                    android:id="@+id/place_autocomplete_fragment_destination"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="bottom|center_horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="12dp">
+            <!--            <ImageView-->
+            <!--                android:padding="5dp"-->
+            <!--                android:src="@drawable/add_more_stops"-->
+            <!--                android:layout_width="30dp"-->
+            <!--                android:layout_height="30dp" />-->
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/saved_places_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4.5"
+        android:background="@color/transparent_background"/>
+</LinearLayout>

@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Wasalny</string>
-    <string name="enter_your_mob">Enter your mobile number</string>
+    <string name="enter_your_mob">ادخل رقم الهاتف</string>
     <string name="mobile_number">Enter your mobile number</string>
     <string name="my_continue">Continue</string>
     <string name="phone_verification">Phone Verification</string>
