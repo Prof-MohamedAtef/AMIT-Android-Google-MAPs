@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
         sessionMgmt=new SessionManagement(getApplicationContext());
+        sessionMgmt.setLanguage("en");
         btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

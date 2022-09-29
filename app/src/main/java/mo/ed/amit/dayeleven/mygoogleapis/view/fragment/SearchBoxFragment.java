@@ -1,4 +1,4 @@
-package mo.ed.amit.dayeleven.mygoogleapis.view;
+package mo.ed.amit.dayeleven.mygoogleapis.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;

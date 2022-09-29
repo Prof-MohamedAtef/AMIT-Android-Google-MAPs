@@ -32,4 +32,14 @@ public class SessionManagement {
     public String getUserName() {
         return pref.getString(KEY_USERNAME, null);
     }
+
+    public void setLanguage(String language){
+        editor.putString(Configs.MyPrefs.LANG, language);
+        editor.commit();
+    }
+
+
+    public String getLang(){
+        return pref.getString(Configs.MyPrefs.LANG,null);
+    }
 }

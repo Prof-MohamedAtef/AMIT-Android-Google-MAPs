@@ -47,7 +47,7 @@ import java.util.ArrayList;
 
 import mo.ed.amit.dayeleven.mygoogleapis.databinding.ActivityMainBinding;
 import mo.ed.amit.dayeleven.mygoogleapis.utils.VerifyConnection;
-import mo.ed.amit.dayeleven.mygoogleapis.view.SearchBoxFragment;
+import mo.ed.amit.dayeleven.mygoogleapis.view.fragment.SearchBoxFragment;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         android.location.LocationListener,
